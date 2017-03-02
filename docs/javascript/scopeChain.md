@@ -35,7 +35,7 @@
    }
   //可以访问a,不能访问b,c
   outer();
-     ```
+  ```
 
 ![with语句延长后的作用域链](http://upload-images.jianshu.io/upload_images/4472988-2482b1ab260b5f17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
