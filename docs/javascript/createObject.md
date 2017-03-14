@@ -22,23 +22,23 @@
 ```
 
 * 构造函数模式（问题也大，不会直接用）
-  ```javascript
-   //代码来自《JavaScript高级程序设计》
-   function Person(name,age,job) {
-       this.name = name;
-       this.age = age;
-       this.job = job;
-       this.sayName = function () {
-           alert(this.name);
-       };
-   }
-   var person1 = new Person('gordenZ','24','front-end engineer');
-  ```
+```javascript
+ //代码来自《JavaScript高级程序设计》
+ function Person(name,age,job) {
+     this.name = name;
+     this.age = age;
+     this.job = job;
+     this.sayName = function () {
+         alert(this.name);
+     };
+ }
+ var person1 = new Person('gordenZ','24','front-end engineer');
+```
 这个例子中，创建了一个构造函数`Person`，并使用`new`操作符实例化了一个对象`person1`。
 **为何要使用new 操作符？**
 想像一下不使用new的情况：
 ```javascript
-var person1 = Person('gordenZ','24','front-end engineer');
+ var person1 = Person('gordenZ','24','front-end engineer');
  console.log(name);//gordenZ
 ```
 如果不使用new操作符，相当于在当前环境下直接执行`Person`这个函数（构造函数也是函数，仅仅是第一个字母大写了）。这里的执行环境是`window`，那么`Person`中的`this`就指向了全局的`window`对象，所以`name`、`age`、`job`、`sayName`等属性都被创建在了全局对象上，可以直接被访问到。
