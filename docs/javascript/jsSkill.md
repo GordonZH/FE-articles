@@ -56,7 +56,6 @@ Function.prototype.bind = Function.prototype.bind || function(context){
     };
 }
 ```
-
 ##### 3. this值的总结 [原文在这里](http://www.thatjsdude.com/interview/js2.html)
  1. 在全局作用域或者一个匿名函数中，`this`指向`window`对象
  2. 严格模式下，在一个立即执行函数(IIFE)中`this`是`undifined`，需要将`window`作为参数传入。
@@ -65,3 +64,19 @@ Function.prototype.bind = Function.prototype.bind || function(context){
  5. 使用构造函数创建一个对象时（使用`new`关键字），this指向这个新创建的对象
  6. 使用`bind`、`cal`l、`apply`指定this的值
  7. 在dom事件处理的handler中，`this`指向触发事件的元素
+
+##### 4. 获取url中?后面的参数
+```javascriot
+function GetRequest() {
+    var url = location.search; 
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+```
