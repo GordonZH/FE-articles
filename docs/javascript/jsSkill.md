@@ -1,4 +1,4 @@
-#####1.比较两个对象是否相等
+##### 1.比较两个对象是否相等
 ```javascript
 function isEqual(a, b) {
     var aProps = Object.getOwnPropertyNames(a),
