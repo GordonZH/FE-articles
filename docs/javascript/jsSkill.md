@@ -80,3 +80,71 @@ function GetRequest() {
     return theRequest;
 }
 ```
+
+##### 5.js强制横屏 [参考](https://www.jianshu.com/p/9c3264f4a405)
+```html
+<div id="fit-container">
+
+    <div id="test">
+        <span>hello</span>
+    </div>
+
+</div>
+```
+```css
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width : 100% ;
+    height : 100% ;
+}
+#fit-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+#test{
+    height: 100%;
+    width: 100%;
+    background-color: #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+```
+
+```javascript
+(function () {
+    function fitScreen() {
+        var width = document.documentElement.clientWidth;
+        var height =  document.documentElement.clientHeight;
+        var $fc =  $('#fit-container');
+        if( width > height ){
+            //横屏
+            $fc.width(width).height(height).css({
+                'top': 0,
+                'left': 0,
+                'transform': 'none',
+                'transform-origin': '50% 50%'
+            });
+        }
+        else{
+            //竖屏
+            $fc.width(height).height(width).css({
+                'top': (height-width)/2,
+                'left': 0-(height-width)/2,
+                'transform': 'rotate(90deg)',
+                'transform-origin': '50% 50%'
+            });
+        }
+    }
+    var evt = "onorientationchange" in window ? "orientationchange" : "resize";
+    fitScreen();
+    window.addEventListener(evt, function() {
+        fitScreen()
+    }, false);
+})();
+```
